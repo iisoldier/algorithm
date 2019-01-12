@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 求硬币的组合,这个用动态规划更有效
+ * 自底向上的原则
  * Author: jinmeng
  * Date: 2017-05-20
  * Time: 23:51
@@ -20,8 +21,11 @@ public class Coins {
 
 
         int[] result = new int[coins.length+1];
+        //设置初始值
         result[0] = 1;
+        // 硬币的种类
         for(int coin : coins){
+            // 每一次相当于新增一种硬币 在原有的基础上更新结果
             for(int i = coin; i <= amount; i++){
                 result[i] += result[i-coin];
             }
