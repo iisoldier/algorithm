@@ -1,9 +1,5 @@
 package com.isoldier.dfs;
 
-import javax.sound.midi.Soundbank;
-import java.util.Deque;
-import java.util.LinkedList;
-
 /**
  * Author: jinmeng
  * Date: 2017-05-13
@@ -16,38 +12,27 @@ public class TargetSum {
     public static void main(String[] args){
 
         int[] nums = {1,1,1,1,1};
-        System.out.println(findTargetSumWays(nums,3));
+
+        targetSum(nums,0,3);
+        System.out.println(result);
     }
+
 
     /**
      * nums中都是正数,给这些数加上正负号,满足所有数的和是S,求出所有可能行的数量
      * @param nums
-     * @param S
-     * @return
+     * @param start
+     * @param target
      */
-    public static int findTargetSumWays(int[] nums, int S) {
-        int sum = 0;
-
-        for(int num : nums){
-            sum += num;
+    public static void  targetSum(int[] nums,int start,int target){
+        if(start == nums.length){
+            if(target == 0){
+                result++;
+            }
+            return;
         }
-        int target = (S + sum)>>1;
-
-        dfs(nums,0,target);
-
-        return result;
-
+        targetSum(nums,start+1,target-nums[start]);
+        targetSum(nums,start+1,target+nums[start]);
     }
 
-    public static void dfs(int[] nums, int start,int target){
-
-        if(target == 0){
-            result++;
-        }
-        if(target <= 0) return;
-
-        for(int i = start; i < nums.length; i++){
-            dfs(nums,i+1,target - nums[i]);
-        }
-    }
 }

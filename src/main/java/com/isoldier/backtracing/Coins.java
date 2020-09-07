@@ -10,6 +10,8 @@ public class Coins {
 
 
     static int result = 0;
+
+
     public static void main(String[] args){
 
         int[] coins = {1,3,2};

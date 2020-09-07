@@ -1,10 +1,13 @@
 package com.isoldier.bfs;
 
 
+import com.isoldier.common.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 二叉树的右侧视图，解题思想是用了二叉树的深度和数组的大小来来判断
  * Author: jinmeng
  * Date: 2017-05-01
  * Time: 23:21
@@ -19,7 +22,9 @@ public class RightSideView{
 
     }
     public void rightView(TreeNode root,List<Integer> result,int depth){
-        if(root == null) return;
+        if(root == null){
+            return;
+        }
         if(depth == result.size()){
             result.add(root.val);
         }
@@ -29,9 +34,3 @@ public class RightSideView{
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
- }
